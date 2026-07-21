@@ -85,5 +85,11 @@ Every push to the main branch automatically:
 # Runtime
 Hosted using Amazon Bedrock AgentCore Runtime.
 
+# Documentation
+
+- docs/architecture.md
+- docs/cicd.md
+- docs/agent_flow.md
+
 # Disclaimer
 This application provides educational information only and should not be used for medical diagnosis or treatment.
