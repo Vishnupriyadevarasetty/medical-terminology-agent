@@ -1,57 +1,94 @@
 # Agent Design
 
 # Objective
-The goal of this project was to build an educational Medical Terminology Agent related to life sciences.The agent should explain medical terms in simple language so that non-medical users can understand them easily.
--The agent is not intended to diagnose diseases,recommend medicines,orprovide medical advice.
+
+The goal of this project was to build an educational Medical Terminology Agent related to life sciences. The agent explains medical terms in simple language so that non-medical users can understand them easily.
+
+The agent is not intended to diagnose diseases, recommend medicines, or provide medical advice.
+
 
 # Design Approach
-I wanted to keep the design simple and modular so that each component had a clear responsibility.This made the code easier to test and maintain.
-The project was divided into the following parts:
-MedicalTerminologyAgent-
+
+I wanted to keep the design simple and modular so that each component had a clear responsibility. This made the code easier to understand, test, and maintain.
+
+The project is divided into the following components.
+
+## MedicalTerminologyAgent
+
 This acts as the main entry point for the application.
-Its responsibilities are:
--validating the user's question
--requesting an explanation from Amazon Bedrock
--handling failures
--returning a structured response object
 
-# BedrockService
-I created a separate service class for Amazon Bedrock so that all model-related logic stays in one place.
-This class contains:
--creates the prompt
--invokes the Nova Micro model
--parses the response
--returns the explanation back to the agent
-Keeping Bedrock logic separate also made unit testing easier.
+Its responsibilities include:
 
-# Input Validation
-Before processing a request,the input is validated.
-This prevents issues such as:
--empty strings
--whitespace-only input
--invalid requests
+- Validating the user's input
+- Requesting an explanation from Amazon Bedrock
+- Handling fallback scenarios
+- Returning a structured response object
 
-# Local Knowledge Base
-A small local knowledge base was added as a fallback mechanism
-If Bedrock is unavailable because of network issues,service errors,or invalid AWS configuration,the application can still answer some commonly known medical terms.
-This improves reliability and prevents complete failure.
 
-# Logging
-Logging was added to make debugging easier
+## BedrockService
+
+I created a separate service class for Amazon Bedrock so that all model-related logic remains in one place.
+
+This class is responsible for:
+
+- Creating the prompt
+- Invoking the Amazon Nova Micro model
+- Parsing the model response
+- Returning the explanation to the agent
+
+Keeping the Bedrock logic separate also made unit testing easier.
+
+
+## Input Validation
+
+Before processing a request, the input is validated.
+
+The validator checks for:
+
+- Empty input
+- Input containing only whitespace
+- Very long requests
+
+This helps prevent unnecessary processing and improves the overall reliability of the application.
+
+
+## Local Knowledge Base
+
+A small local knowledge base was added as a fallback mechanism.
+
+If Amazon Bedrock is unavailable because of network issues, service errors, or AWS configuration problems, the application can still explain a few commonly used medical terms.
+
+This improves reliability and prevents complete failure when the external service is unavailable.
+
+
+## Logging
+
+Logging was added to make debugging and monitoring easier.
+
 The application logs:
--incoming requests
--successful responses
--fallback execution
--unexpected failures
 
-# Error Handling
+- Incoming requests
+- Successful responses
+- Fallback execution
+- Unexpected errors
+
+
+## Error Handling
+
 Custom exceptions were added to make failures easier to understand.
+
 For example:
--invalid input raises 'InvalidQuestionError'
--unknown medical terms raise 'MedicalTermNotFoundError'
 
-This provides cleaner error handling compared to generic exceptions.
+- Invalid input raises `InvalidQuestionError`
+- Unknown medical terms raise `MedicalTermNotFoundError`
 
-# Configuration
+Using custom exceptions makes the code easier to read and maintain compared to handling generic exceptions.
+
+
+## Configuration
+
 AWS configuration is managed through environment variables instead of hardcoding values.
-This allows the same code to run locally, in CI/CD pipelines, and inside AgentCore Runtime without changing the source code.
+
+This allows the same application to run locally, during testing, and inside Amazon Bedrock AgentCore Runtime without modifying the source code.
+
+The Bedrock model ID and AWS Region can be configured through environment variables, making the application easier to deploy across different environments.

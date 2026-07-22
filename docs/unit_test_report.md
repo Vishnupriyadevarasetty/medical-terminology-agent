@@ -1,32 +1,34 @@
 # Unit Test Report
-Testing was performed throughout the development of the project to ensure that each component behaved as expected.
+Unit testing was performed during development to verify that each component of the application worked as expected. The tests cover both normal execution and common failure scenarios.
+
 
 # Test Framework
-The following tools were used during testing:
--pytest
--pytest-mock
--pytest-cov
+The following tools were used for testing:
+- pytest
+- pytest-mock
+- pytest-cov
 
 # Test Coverage
-Unit tests were written for all major modules in the project
-The following files are covered:
--MedicalTerminologyAgent
--BedrockService
--InputValidator
--Exception classes
--Response model
+Unit tests were written for the main components of the application, including:
+- MedicalTerminologyAgent
+- BedrockService
+- InputValidator
+- Custom exception classes
+- MedicalResponse model
 
-The tests verify both successful execution and failure scenarios.
+The tests verify both successful execution and error handling.
 
 # Test Scenarios
 The following scenarios were tested:
--Valid medical terminology
--Medical abbreviations
--Empty input
--Unknown medical terms
--Amazon Bedrock failure
--Local knowledge base fallback
--Custom exception handling
+- Valid medical terms
+- Medical abbreviations
+- Empty input
+- Input containing only whitespace
+- Unknown medical terms
+- Amazon Bedrock service failure
+- Local knowledge base fallback
+- Custom exception handling
 
-# Results
-All unit tests completed successfully without failures.
+# Test Results
+A total of **13 unit tests** were executed successfully.
+No test failures were observed during the final test execution.
