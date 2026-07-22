@@ -57,3 +57,15 @@ jobs:
       - name: Upload Package to S3
         run: |
           aws s3 cp medical-terminology-agent.zip s3://$S3_BUCKET/
+
+      - name: Install AgentCore CLI
+        run: |
+          npm install -g @aws/agentcore
+
+      - name: Deploy AgentCore Runtime
+        run: |
+          agentcore deploy
+
+      - name: Verify AgentCore Runtime Status
+        run: |
+          agentcore status

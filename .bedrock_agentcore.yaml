@@ -4,12 +4,12 @@ agents:
     name: medical_terminology_agent
     language: python
     node_version: '20'
-    entrypoint: C:/Projects/medical_terminology_agent/main.py
+    entrypoint: main.py
     deployment_type: container
     runtime_type: null
     platform: linux/arm64
     container_runtime: none
-    source_path: C:\Projects\medical_terminology_agent
+    source_path: .
     aws:
       execution_role: arn:aws:iam::225602822766:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-4067720e66
       execution_role_auto_create: false
@@ -64,12 +64,12 @@ agents:
     name: medical_terminology_agent_v2
     language: python
     node_version: '20'
-    entrypoint: C:/Projects/medical_terminology_agent/main.py
+    entrypoint: main.py
     deployment_type: container
     runtime_type: null
     platform: linux/arm64
     container_runtime: none
-    source_path: C:\Projects\medical_terminology_agent
+    source_path: .
     aws:
       execution_role: arn:aws:iam::225602822766:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-ba0b022310
       execution_role_auto_create: false
