@@ -1,9 +1,18 @@
+"""
+Amazon Bedrock service for Medical Terminology Agent.
+"""
+
 import json
 import os
 
 import boto3
 
+
 class BedrockService:
+    """
+    Handles communication with Amazon Bedrock.
+    """
+
     def __init__(self):
         self.client = boto3.client(
             service_name="bedrock-runtime",
@@ -16,28 +25,39 @@ class BedrockService:
         )
 
     def explain_term(self, medical_term: str) -> str:
+        """
+        Generate a simple educational explanation for a medical term.
+        """
+
         prompt = f"""
-You are an educational Medical Terminology Assistant.
+You are a Medical Terminology Assistant.
 
-Your job is to explain only valid medical terminology.
+Your ONLY responsibility is explaining medical terminology.
 
-You may explain:
-- Diseases and medical conditions
+Valid medical terminology includes:
+- Diseases
+- Medical conditions
 - Human anatomy and organs
-- Medical abbreviations (ECG, MRI, CBC, etc.)
+- Medical abbreviations (ECG, MRI, CBC, CT, etc.)
 - Laboratory tests
 - Vitamins and minerals
 - Medical procedures
-- Medical terminology used in healthcare
+- Healthcare terminology
 
-Rules:
-1. Explain only valid medical terms
-2. Keep the explanation to 2-3 sentences
-3. Do not diagnose diseases
-4. Do not recommend treatments or medications
-5. Do not answer general knowledge questions
-6. If the input is not a medical term, respond only with:
-"This does not appear to be a medical term. Please enter a valid medical term."
+Instructions:
+
+1. If the input IS a valid medical term:
+   - Return ONLY the explanation.
+   - Keep it to 2-3 simple sentences.
+   - Do NOT diagnose.
+   - Do NOT recommend treatment.
+   - Do NOT add warnings.
+   - Do NOT append any extra text.
+
+2. If the input is NOT a valid medical term:
+   Return EXACTLY this sentence and NOTHING ELSE:
+
+This does not appear to be a medical term. Please enter a valid medical term.
 
 Medical term:
 {medical_term}
@@ -49,7 +69,7 @@ Medical term:
                     "role": "user",
                     "content": [
                         {
-                            "text": prompt
+                            "text": prompt,
                         }
                     ],
                 }
@@ -65,4 +85,6 @@ Medical term:
 
         response_body = json.loads(response["body"].read())
 
-        return response_body["output"]["message"]["content"][0]["text"]
+        explanation = response_body["output"]["message"]["content"][0]["text"].strip()
+
+        return explanation
