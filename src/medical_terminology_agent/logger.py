@@ -1,9 +1,4 @@
-"""
-Logging configuration for the Medical Terminology Agent.
-"""
-
 import logging
-
 
 logging.basicConfig(
     level=logging.INFO,

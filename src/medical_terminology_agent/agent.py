@@ -1,7 +1,3 @@
-"""
-Main agent implementation for the Medical Terminology Agent.
-"""
-
 from medical_terminology_agent.bedrock_service import BedrockService
 from medical_terminology_agent.exceptions import MedicalTermNotFoundError
 from medical_terminology_agent.knowledge_base import MEDICAL_KNOWLEDGE
@@ -11,35 +7,13 @@ from medical_terminology_agent.validator import InputValidator
 
 
 class MedicalTerminologyAgent:
-    """
-    Provides educational explanations for common medical terminology.
-    """
-
     def __init__(self):
-        """
-        Initialize the Medical Terminology Agent.
-        """
         self.bedrock_service = BedrockService()
 
     def explain(self, question: str) -> MedicalResponse:
-        """
-        Explain a medical term.
-
-        Args:
-            question: The medical term entered by the user.
-
-        Returns:
-            MedicalResponse containing the explanation.
-
-        Raises:
-            MedicalTermNotFoundError:
-                If the medical term is not available.
-        """
-
         InputValidator.validate(question)
 
         search_term = question.strip().lower()
-
         logger.info("Searching for medical term: %s", search_term)
 
         try:

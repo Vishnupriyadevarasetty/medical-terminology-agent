@@ -1,14 +1,7 @@
-"""
-Unit tests for models.py
-"""
-
 from medical_terminology_agent.models import MedicalResponse
 
 
 def test_medical_response_creation():
-    """
-    Test that a MedicalResponse object is created correctly.
-    """
     response = MedicalResponse(
         success=True,
         message="Sample explanation",
