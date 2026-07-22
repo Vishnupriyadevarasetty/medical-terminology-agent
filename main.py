@@ -4,7 +4,17 @@ from medical_terminology_agent.agent import MedicalTerminologyAgent
 from medical_terminology_agent.exceptions import MedicalTermNotFoundError
 
 app = BedrockAgentCoreApp()
-agent = MedicalTerminologyAgent()
+
+agent = None
+
+
+def get_agent():
+    global agent
+
+    if agent is None:
+        agent = MedicalTerminologyAgent()
+
+    return agent
 
 
 @app.entrypoint
@@ -12,7 +22,7 @@ def invoke(payload):
     try:
         question = payload.get("question", "")
 
-        response = agent.explain(question)
+        response = get_agent().explain(question)
 
         return {
             "success": response.success,
