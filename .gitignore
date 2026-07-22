@@ -1,29 +1,99 @@
+# =========================
 # Virtual Environment
+# =========================
 .venv/
 venv/
+env/
+ENV/
 
+
+# =========================
 # Environment Variables
+# =========================
 .env
+.env.*
 
-# Python Cache
+
+# =========================
+# Python Cache Files
+# =========================
 __pycache__/
 *.py[cod]
+*$py.class
 
+
+# =========================
 # Pytest
+# =========================
 .pytest_cache/
 .coverage
+coverage.xml
 htmlcov/
 
+
+# =========================
+# Test Reports
+# =========================
+*.xml
+*.html
+
+
+# =========================
 # VS Code
+# =========================
 .vscode/
 
-# Build Files
+
+# =========================
+# Build / Packaging
+# =========================
 build/
 dist/
 *.egg-info/
+.eggs/
 
+
+# =========================
 # Logs
+# =========================
 *.log
+logs/
 
-# macOS
+
+# =========================
+# OS Generated Files
+# =========================
 .DS_Store
+Thumbs.db
+
+
+# =========================
+# Jupyter / Notebooks
+# =========================
+.ipynb_checkpoints/
+
+
+# =========================
+# AgentCore / AWS Local Files
+# =========================
+.aws/
+.agentcore/
+
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
+*.bak
+# =========================
+# AWS / AgentCore Local Files
+# =========================
+.aws/
+.agentcore/
+.bedrock_agentcore/
+
+# =========================
+# Deployment Packages
+# =========================
+*.zip
