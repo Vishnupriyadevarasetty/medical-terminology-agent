@@ -2,24 +2,23 @@ import json
 
 from medical_terminology_agent.bedrock_service import BedrockService
 
-
 def test_explain_term_success(mocker):
-    mock_client = mocker.Mock()
+    mock_client=mocker.Mock()
 
-    mock_response = {
+    mock_response={
         "output": {
-            "message": {
-                "content": [
+            "message":{
+                "content":[
                     {
-                        "text": "Diabetes is a blood sugar disorder."
+                        "text":"Diabetes is a blood sugar disorder"
                     }
                 ]
             }
         }
     }
 
-    mock_client.invoke_model.return_value = {
-        "body": mocker.Mock(
+    mock_client.invoke_model.return_value={
+        "body":mocker.Mock(
             read=lambda: json.dumps(mock_response)
         )
     }
@@ -29,8 +28,7 @@ def test_explain_term_success(mocker):
         return_value=mock_client,
     )
 
-    service = BedrockService()
+    service=BedrockService()
 
-    result = service.explain_term("diabetes")
-
+    result=service.explain_term("diabetes")
     assert "blood sugar" in result

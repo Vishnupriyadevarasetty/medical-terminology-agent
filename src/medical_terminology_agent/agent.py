@@ -8,18 +8,18 @@ from medical_terminology_agent.validator import InputValidator
 
 class MedicalTerminologyAgent:
     def __init__(self):
-        self.bedrock_service = BedrockService()
+        self.bedrock_service=BedrockService()
 
-    def explain(self, question: str) -> MedicalResponse:
+    def explain(self, question:str) -> MedicalResponse:
         InputValidator.validate(question)
 
-        search_term = question.strip().lower()
+        search_term=question.strip().lower()
         logger.info("Searching for medical term: %s", search_term)
 
         try:
-            explanation = self.bedrock_service.explain_term(search_term)
+            explanation=self.bedrock_service.explain_term(search_term)
 
-            logger.info("Medical term explained using Amazon Bedrock.")
+            logger.info("Medical term explained using Amazon Bedrock")
 
             return MedicalResponse(
                 success=True,
@@ -39,9 +39,9 @@ class MedicalTerminologyAgent:
                     f"Medical term '{question}' was not found."
                 )
 
-            result = MEDICAL_KNOWLEDGE[search_term]
+            result=MEDICAL_KNOWLEDGE[search_term]
 
-            logger.info("Medical term found in local knowledge base.")
+            logger.info("Medical term found in local knowledge base")
 
             return MedicalResponse(
                 success=True,

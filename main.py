@@ -1,24 +1,19 @@
-"""
-Amazon Bedrock AgentCore entry point
-for Medical Terminology Agent.
-"""
-
 from bedrock_agentcore import BedrockAgentCoreApp
 
 from medical_terminology_agent.agent import MedicalTerminologyAgent
 from medical_terminology_agent.exceptions import MedicalTermNotFoundError
 
 
-app = BedrockAgentCoreApp()
+app=BedrockAgentCoreApp()
 
-agent = None
+agent=None
 
 
 def get_agent():
     global agent
 
     if agent is None:
-        agent = MedicalTerminologyAgent()
+        agent=MedicalTerminologyAgent()
 
     return agent
 
@@ -27,35 +22,32 @@ def get_agent():
 def invoke(payload):
 
     try:
-        # Support both AgentCore default payload
-        # and custom payloads
-
-        question = (
+        question=(
             payload.get("question")
             or payload.get("prompt")
             or ""
         )
 
-        response = get_agent().explain(question)
+        response=get_agent().explain(question)
 
         return {
-            "success": response.success,
-            "category": response.category,
-            "message": response.message,
+            "success":response.success,
+            "category":response.category,
+            "message":response.message,
         }
 
     except MedicalTermNotFoundError as error:
 
         return {
-            "success": False,
-            "message": str(error),
+            "success":False,
+            "message":str(error),
         }
 
     except Exception as error:
 
         return {
-            "success": False,
-            "message": f"Unexpected error: {error}",
+            "success":False,
+            "message":f"Unexpected error: {error}",
         }
 
 

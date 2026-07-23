@@ -1,111 +1,111 @@
-MEDICAL_KNOWLEDGE = {
-    "diabetes": {
-        "category": "Disease",
-        "description": (
+MEDICAL_KNOWLEDGE= {
+    "diabetes":{
+        "category":"Disease",
+        "description":(
             "Diabetes is a chronic condition in which the body has difficulty "
-            "regulating blood sugar levels."
+            "regulating blood sugar levels"
         ),
     },
-    "hypertension": {
-        "category": "Disease",
-        "description": (
+    "hypertension":{
+        "category":"Disease",
+        "description":(
             "Hypertension, or high blood pressure, is a condition where the "
-            "force of blood against artery walls remains consistently high."
+            "force of blood against artery walls remains consistently high"
         ),
     },
-    "asthma": {
-        "category": "Disease",
-        "description": (
+    "asthma":{
+        "category":"Disease",
+        "description":(
             "Asthma is a chronic condition that causes inflammation and "
-            "narrowing of the airways, making breathing difficult."
+            "narrowing of the airways, making breathing difficult"
         ),
     },
-    "anemia": {
-        "category": "Disease",
-        "description": (
+    "anemia":{
+        "category":"Disease",
+        "description":(
             "Anemia is a condition in which the body does not have enough "
-            "healthy red blood cells to carry oxygen efficiently."
+            "healthy red blood cells to carry oxygen efficiently"
         ),
     },
-    "migraine": {
-        "category": "Disease",
-        "description": (
+    "migraine":{
+        "category":"Disease",
+        "description":(
             "Migraine is a neurological condition that causes intense headaches "
-            "often accompanied by nausea and sensitivity to light or sound."
+            "often accompanied by nausea and sensitivity to light or sound"
         ),
     },
-    "heart": {
-        "category": "Organ",
-        "description": (
-            "The heart is a muscular organ that pumps blood throughout the body."
+    "heart":{
+        "category":"Organ",
+        "description":(
+            "The heart is a muscular organ that pumps blood throughout the body"
         ),
     },
-    "brain": {
-        "category": "Organ",
-        "description": (
+    "brain":{
+        "category":"Organ",
+        "description":(
             "The brain is the body's control center and regulates movement, "
-            "thought, memory, and other vital functions."
+            "thought, memory, and other vital functions"
         ),
     },
-    "lungs": {
-        "category": "Organ",
-        "description": (
+    "lungs":{
+        "category":"Organ",
+        "description":(
             "The lungs are responsible for exchanging oxygen and carbon dioxide "
-            "during breathing."
+            "during breathing"
         ),
     },
-    "liver": {
-        "category": "Organ",
-        "description": (
+    "liver":{
+        "category":"Organ",
+        "description":(
             "The liver processes nutrients, removes toxins, and produces "
-            "important proteins."
+            "important proteins"
         ),
     },
-    "kidney": {
-        "category": "Organ",
-        "description": (
+    "kidney":{
+        "category":"Organ",
+        "description":(
             "The kidneys filter waste from the blood and help maintain the "
-            "body's fluid and electrolyte balance."
+            "body's fluid and electrolyte balance"
         ),
     },
-    "vitamin d": {
-        "category": "Vitamin",
-        "description": (
-            "Vitamin D helps the body absorb calcium and supports healthy bones."
+    "vitamin d":{
+        "category":"Vitamin",
+        "description":(
+            "Vitamin D helps the body absorb calcium and supports healthy bones"
         ),
     },
-    "vitamin c": {
-        "category": "Vitamin",
-        "description": (
-            "Vitamin C supports the immune system and helps repair body tissues."
+    "vitamin c":{
+        "category":"Vitamin",
+        "description":(
+            "Vitamin C supports the immune system and helps repair body tissues"
         ),
     },
-    "vitamin b12": {
+    "vitamin b12":{
         "category": "Vitamin",
-        "description": (
+        "description":(
             "Vitamin B12 is important for nerve function and healthy red blood "
-            "cell production."
+            "cell production"
         ),
     },
-    "cbc": {
-        "category": "Laboratory Test",
-        "description": (
-            "Complete Blood Count (CBC) measures different components of blood."
+    "cbc":{
+        "category":"Laboratory Test",
+        "description":(
+            "Complete Blood Count (CBC) measures different components of blood"
         ),
     },
-    "lipid profile": {
-        "category": "Laboratory Test",
-        "description": (
-            "A lipid profile measures cholesterol and triglyceride levels."
+    "lipid profile":{
+        "category":"Laboratory Test",
+        "description":(
+            "A lipid profile measures cholesterol and triglyceride levels"
         ),
     },
-    "blood glucose": {
-        "category": "Laboratory Test",
-        "description": (
+    "blood glucose":{
+        "category":"Laboratory Test",
+        "description":(
             "A blood glucose test measures the amount of sugar in the blood."
         ),
     },
-    "ecg": {
+    "ecg":{
         "category": "Medical Abbreviation",
         "description": (
             "ECG stands for Electrocardiogram, a test that records the heart's "

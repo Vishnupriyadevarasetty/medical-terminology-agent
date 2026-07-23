@@ -1,22 +1,13 @@
-"""
-Amazon Bedrock service for Medical Terminology Agent.
-"""
-
 import json
 import os
 
 import boto3
 
-
 class BedrockService:
-    """
-    Handles communication with Amazon Bedrock.
-    """
-
     def __init__(self):
         self.client = boto3.client(
             service_name="bedrock-runtime",
-            region_name=os.getenv("AWS_REGION", "us-east-1"),
+            region_name=os.getenv("AWS_REGION","us-east-1"),
         )
 
         self.model_id = os.getenv(
@@ -24,11 +15,7 @@ class BedrockService:
             "amazon.nova-micro-v1:0",
         )
 
-    def explain_term(self, medical_term: str) -> str:
-        """
-        Generate a simple educational explanation for a medical term.
-        """
-
+    def explain_term(self,medical_term: str) -> str:
         prompt = f"""
 You are a Medical Terminology Assistant.
 
@@ -46,7 +33,7 @@ Valid medical terminology includes:
 
 Instructions:
 
-1. If the input IS a valid medical term:
+1. If the input iS a valid medical term:
    - Return ONLY the explanation.
    - Keep it to 2-3 simple sentences.
    - Do NOT diagnose.
@@ -63,28 +50,28 @@ Medical term:
 {medical_term}
 """
 
-        request_body = {
-            "messages": [
+        request_body={
+            "messages":[
                 {
-                    "role": "user",
-                    "content": [
+                    "role":"user",
+                    "content":[
                         {
-                            "text": prompt,
+                            "text":prompt,
                         }
                     ],
                 }
             ]
         }
 
-        response = self.client.invoke_model(
+        response=self.client.invoke_model(
             modelId=self.model_id,
             body=json.dumps(request_body),
             contentType="application/json",
             accept="application/json",
         )
 
-        response_body = json.loads(response["body"].read())
+        response_body=json.loads(response["body"].read())
 
-        explanation = response_body["output"]["message"]["content"][0]["text"].strip()
+        explanation=response_body["output"]["message"]["content"][0]["text"].strip()
 
         return explanation
